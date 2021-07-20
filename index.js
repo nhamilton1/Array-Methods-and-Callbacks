@@ -60,15 +60,16 @@ Use the higher-order function called getYears to do the following:
 3. Return an array called years containing all of the years in the getFinals data set*/
 
 // recieve an data (fifaData)/ getFinalscb 
-function getYears(data, getFinalscb) {
+
+function getYears(getFinalscb) {
     // map through finals callback to get all of the years (item.year)
-    const years = data.Year.map(function(item){
-        return getFinalscb.item.Year
+    const years = getFinalscb.map(function(item){
+        return item.Year
     });
     return years;
 }
 
-console('Task 3:', getYears(fifaData))
+// console.log('Task 3:', getYears(getFinals)
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function getWinners to do the following:  
@@ -78,13 +79,17 @@ Use the higher-order function getWinners to do the following:
 4. Returns the names of all winning countries in an array called `winners` */ 
 
 // 2 params, data (fifaData)/ getFinalscb (from task 2)
-function getWinners(/* code here */) {
+function getWinners(getFinalscb) {
     /* code here */
     // want an array of winners
 
+    const winningCountries = getFinalscb.map(function(item){
+         
+    });
+    return winningCountries;
 }
 
-
+// console.log('Task 3:',getWinners(getFinals()))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use the higher-order function getWinnersByYear to do the following:

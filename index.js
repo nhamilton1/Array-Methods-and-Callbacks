@@ -45,11 +45,14 @@ hint - you should be looking at the stage key inside of the objects
 
 // data- this will be the fifaData when you pass in your argument - this is an array
 function getFinals(data) {
-   const finalStage = data.filter(function(item){
-    return item.Stage === 'Final'
-   });
-   return finalStage;
+   const finalStage = data.filter(item => item.Stage === 'Final');
+   return finalStage;   
 }
+
+// const finalStage = data.filter(function(item){
+//     return item.Stage === 'Final'
+//    });
+//    return finalStage;
 
 console.log('Task 2:', getFinals(fifaData));
 
@@ -61,15 +64,22 @@ Use the higher-order function called getYears to do the following:
 
 // recieve an data (fifaData)/ getFinalscb 
 
-function getYears(getFinalscb) {
+function getYears(data, getFinalscb) {
     // map through finals callback to get all of the years (item.year)
-    const years = getFinalscb.map(function(item){
+    const years = data.map(function(item){
+        getFinalscb.Year
         return item.Year
     });
     return years;
 }
 
-// console.log('Task 3:', getYears(getFinals)
+// const years = data.map(function(item){
+//     getFinalscb.Year
+//     return item.Year
+// });
+// return years;
+
+// console.log('Task 3:', getYears(fifaData, getFinals());
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function getWinners to do the following:  
@@ -79,15 +89,21 @@ Use the higher-order function getWinners to do the following:
 4. Returns the names of all winning countries in an array called `winners` */ 
 
 // 2 params, data (fifaData)/ getFinalscb (from task 2)
-function getWinners(getFinalscb) {
-    /* code here */
-    // want an array of winners
-
-    const winningCountries = getFinalscb.map(function(item){
-         
-    });
-    return winningCountries;
+function getWinners(data, getFinalscb) {
+    let winningCountry = [];
+    getFinalscb(data).map(item => {
+        if (item['Home Team Goals'] > item['Away Team Goals']){
+            return winningCountry.push(item['Home Team Name']);
+        }
+        if (item['Away Team Goals'] > item['Home Team Goals']){
+            return winningCountry.push(item['Away Team Name']);
+        }
+    })
+    return winningCountry;
 }
+console.log('task 4', getWinners(fifaData, getFinals));
+
+
 
 // console.log('Task 3:',getWinners(getFinals()))
 

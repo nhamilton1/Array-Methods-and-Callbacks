@@ -130,9 +130,9 @@ hint: the strings returned need to exactly match the string in step 4.
 // 3 params data (fifaData)/ getYearscb/ getWinnerscb
 function getWinnersByYear(data, getYearscb, getWinnerscb) {
     const winners = getWinnerscb(data, getFinals);
-    console.log('winners', winners);
+    // console.log('winners', winners);
     const years = getYearscb(data, getFinals);
-    console.log('years',years)
+    // console.log('years',years)
     return winners.map(function(item, index){
         return `In ${years[index]}, ${item} won the world cup!`;
     })
@@ -157,9 +157,12 @@ Use the higher order function getAverageGoals to do the following:
 
 
 function getAverageGoals(getFinalscb) {
-   const avgTeamGoals = getFinalscb.reduce(function(acc, item){
-        return acc + item['Home Team Goals'] + item['Away Team Goals'];
-   },0);
+//    const avgTeamGoals = getFinalscb.reduce(function(acc, item){
+//         return acc + item['Home Team Goals'] + item['Away Team Goals'];
+//    },0);
+
+//arrow function
+    const avgTeamGoals = getFinalscb.reduce((acc, item) => acc + item['Home Team Goals'] + item['Away Team Goals'], 0);
    return (avgTeamGoals / getFinalscb.length).toFixed(2);
 }
 
@@ -174,13 +177,14 @@ Create a function called `getCountryWins` that takes the parameters `data` and `
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
-
-    /* code here */
-
+function getCountryWins(data, initials) {
+// const filteredArray = data.filter(item => initials === item["Home Team Initials"] || initials === item["Away Team Initials"]);
+// console.log(filteredArray)
+// const worldCupWins = filteredArray.filter(item => item['Home Team Goals'] > item['Away Team Goals'] ? item['Home Team Initials'] : item['Away Team Initials'])
+// return worldCupWins
 }
 
-
+console.log('Stretch 1', getCountryWins(fifaData, 'GER'))
 
 /* 💪💪💪💪💪 Stretch 2: 💪💪💪💪💪 
 Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
